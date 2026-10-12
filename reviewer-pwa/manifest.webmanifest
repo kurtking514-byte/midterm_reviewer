@@ -1,6 +1,6 @@
 {
   "name": "Midterm Reviewer",
-  "short_name": "Reviewer",
+  "short_name": "Midterm Reviewer",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
