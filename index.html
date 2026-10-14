@@ -159,6 +159,10 @@ body{font-variant-numeric:lining-nums tabular-nums}
 #notes .ttl,.big{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums}
 #notes .ttl{font-size:1.3rem;font-weight:800;line-height:1.25}
 #notes .def,#notes .prac,#notes .easy{border-radius:var(--radius-0)}
+
+/* Low-key creator credit near the active module and notes footer */
+.kk-credit{display:inline-block;margin-left:.35em;color:var(--ink-soft);font:600 .55em/1 var(--font-ui);letter-spacing:.12em;vertical-align:middle;opacity:.7}
+.notes-credit{margin:0 auto var(--space-2);color:var(--ink-soft);font:600 10px/1.2 var(--font-ui);letter-spacing:.16em;text-align:center;opacity:.65}
 </style>
 </head>
 <body>
@@ -262,13 +266,13 @@ function hl(s,q){
 let marks = [], mi = -1;
 function renderNotes(id,q){
   const lines = getNotes(id), box = $('#notes'); let h='', prevSp=true;
-  if(!lines.length){ box.innerHTML = '<div class="box msg">No notes yet. Paste text into <code>notes-'+esc(id)+'</code>.</div><button class="pri start-bottom" data-a="start">Start Quiz</button>'; return; }
+  if(!lines.length){ box.innerHTML = '<div class="box msg">No notes yet. Paste text into <code>notes-'+esc(id)+'</code>.</div><button class="pri start-bottom" data-a="start">Start Quiz</button><div class="notes-credit">KK</div>'; return; }
   for(const L of lines){
     if(L.c==='sp'){ if(!prevSp) h += '<div class="sp"></div>'; prevSp = true; continue; }
     prevSp = false;
     h += '<div'+(L.c?' class="'+L.c+'"':'')+'>'+hl(L.t,q)+'</div>';
   }
-  h += '<button class="pri start-bottom" data-a="start">Start Quiz</button>';
+  h += '<button class="pri start-bottom" data-a="start">Start Quiz</button><div class="notes-credit">KK</div>';
   box.innerHTML = h;
   marks = [...box.querySelectorAll('mark')]; mi = -1;
   $('#cnt').textContent = q ? marks.length+' match'+(marks.length===1?'':'es') : '';
@@ -383,7 +387,7 @@ function renderHome(){
 /* ---------- module view + tabs ---------- */
 function renderModule(id, sub){
   const m = modById(id); mem.sub = sub; save();
-  $('#view').innerHTML = '<h2>'+esc(m.s||'CC1')+' · '+esc(tabOf(m))+' · '+esc(m.title)+'</h2><div class="sub"><button data-a="sub" data-s="read" class="'+(sub==='read'?'on':'')+'">Read</button><button data-a="sub" data-s="quiz" class="'+(sub==='quiz'?'on':'')+'">Quiz</button></div><div id="pane"></div>';
+  $('#view').innerHTML = '<h2>'+esc(m.s||'CC1')+' · '+esc(tabOf(m))+' · '+esc(m.title)+' <span class="kk-credit">KK</span></h2><div class="sub"><button data-a="sub" data-s="read" class="'+(sub==='read'?'on':'')+'">Read</button><button data-a="sub" data-s="quiz" class="'+(sub==='quiz'?'on':'')+'">Quiz</button></div><div id="pane"></div>';
   if(sub==='quiz') return renderQuiz(id);
   $('#pane').innerHTML = '<div class="tool"><input id="q" type="search" placeholder="Search these notes…"><span id="cnt" class="mut"></span><button data-a="mprev" title="Previous match">↑</button><button data-a="mnext" title="Next match">↓</button><button data-a="fm">A−</button><button data-a="fp">A+</button></div><div id="notes"></div>';
   $('#notes').style.fontSize = mem.fs+'px';
