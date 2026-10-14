@@ -1,11 +1,11 @@
 {
-  "name": "Midterm Reviewer",
-  "short_name": "Midterm Reviewer",
+  "name": "My Midterm Reviewer",
+  "short_name": "My Midterm Reviewer",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#10131a",
-  "theme_color": "#10131a",
+  "background_color": "#12151A",
+  "theme_color": "#12151A",
   "icons": [
     { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
