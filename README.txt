@@ -1,16 +1,18 @@
-Midterm Reviewer — installable offline study app
+MY MIDTERM REVIEWER
 
-HOST IT FOR FREE
-1. Open https://app.netlify.com/drop.
-2. Drag the whole reviewer-pwa folder onto the page. Netlify will provide an HTTPS link to share.
-3. GitHub Pages is another free hosting option for a folder of website files.
+Open the app: https://tinyurl.com/kkmidterm
 
-INSTALL IT
-- Android or desktop Chrome: open the link, then choose Install (or use the browser menu and choose Install app / Add to Home screen).
+HOW TO USE IT
+1. Choose a subject from the row near the top.
+2. Choose a lecture, unit, or module.
+3. Tap Read to study the notes. Scroll to the bottom and tap Start Quiz when you are ready.
+4. Tap Quiz to start or continue a quiz. Choose an answer to see whether it is correct and read the explanation, then continue to the next question.
+5. Use the search box to find words in the notes. Use A− and A+ to change the text size, and THEME to switch between dark and light mode.
+
+USE IT LIKE AN APP
+- Android or desktop Chrome: open the link, then choose Install or Add to Home screen from the browser menu.
 - iPhone: open the link in Safari, tap Share, then Add to Home Screen.
+- The app can keep working offline after it has loaded while you are online. Quiz progress is saved in that browser on that device and does not sync to other devices.
 
-PUSH AN UPDATE
-Replace the files with the updated versions. In sw.js, change the cache name (for example reviewer-v1 to reviewer-v2), then redeploy the folder. Installed copies will fetch and cache the new version.
-
-SAVED PROGRESS
-Progress is saved on each device and in each browser separately; it does not sync between friends or devices. iOS may clear website data if the app is not used for a long time.
+SHARING
+Share this link with classmates: https://tinyurl.com/kkmidterm
