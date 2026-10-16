@@ -111,7 +111,7 @@ mark{background:var(--mustard-fill);color:var(--ink);border-radius:var(--radius-
 .grid .cur{outline:2px solid var(--mustard);outline-offset:2px}
 .big{font:700 clamp(2rem,10vw,3.5rem)/1 var(--font-slab);text-align:left}
 .row{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:var(--space-3);margin:var(--space-4) 0}
-.start-bottom{display:block;width:min(100%,360px);min-height:52px;margin:var(--space-5) auto var(--space-2);font:700 var(--font-size-ui)/1.2 var(--font-ui);letter-spacing:.06em;text-transform:uppercase}
+.start-bottom{display:block;width:min(100%,360px);min-height:52px;margin:var(--space-5) auto var(--space-2);font:inherit;font-weight:800;line-height:1.2}
 .mut{color:var(--ink-soft);font:var(--font-size-ui)/1.3 var(--font-ui)}
 .good{color:var(--correct)}.badc{color:var(--wrong)}
 body::after{opacity:.08}
@@ -163,7 +163,8 @@ body{font-variant-numeric:lining-nums tabular-nums}
 /* Low-key creator credit near the active module and notes footer */
 .kk-credit{display:inline-block;margin-left:.35em;color:var(--ink-soft);font:600 .55em/1 var(--font-ui);letter-spacing:.12em;vertical-align:middle;opacity:.7}
 .notes-credit{margin:0 auto var(--space-2);color:var(--ink-soft);font:600 10px/1.2 var(--font-ui);letter-spacing:.16em;text-align:center;opacity:.65}
-</style>
+.github-support{display:flex;align-items:center;justify-content:center;gap:12px;margin:var(--space-5) 0 var(--space-3);padding:var(--space-4);border:var(--border-ink);background:var(--paper-2);color:var(--ink);font:600 var(--font-size-ui)/1.4 var(--font-ui);text-decoration:none;text-align:left}
+.github-support:hover{background:var(--mustard-fill)}.lesson-support{margin-top:var(--space-3)}.github-support svg{flex:none;width:28px;height:28px;fill:currentColor}.github-support span{flex:1}.github-support b{display:block;font-weight:700}.github-support small{display:block;margin-top:2px;color:var(--ink-soft);font:var(--font-size-ui)/1.35 var(--font-ui)}</style>
 </head>
 <body>
 <header>
@@ -266,13 +267,13 @@ function hl(s,q){
 let marks = [], mi = -1;
 function renderNotes(id,q){
   const lines = getNotes(id), box = $('#notes'); let h='', prevSp=true;
-  if(!lines.length){ box.innerHTML = '<div class="box msg">No notes yet. Paste text into <code>notes-'+esc(id)+'</code>.</div><button class="pri start-bottom" data-a="start">Start Quiz</button><div class="notes-credit">KK</div>'; return; }
+  if(!lines.length){ box.innerHTML = '<div class="box msg">No notes yet. Paste text into <code>notes-'+esc(id)+'</code>.</div><button class="pri start-bottom" data-a="start">Start Quiz</button><a class="github-support lesson-support" href="https://github.com/kurtking514-byte/midterm_reviewer" target="_blank" rel="noopener noreferrer" aria-label="Support the creator on GitHub by starring the repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.17-3.02-.12-.29-.51-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.73.79 1.17 1.79 1.17 3.02 0 4.32-2.63 5.28-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span><b>Support the creator on GitHub</b><small>If this reviewer helped you, please star the repository. Thank you!</small></span><span aria-hidden="true">↗</span></a>'; return; }
   for(const L of lines){
     if(L.c==='sp'){ if(!prevSp) h += '<div class="sp"></div>'; prevSp = true; continue; }
     prevSp = false;
     h += '<div'+(L.c?' class="'+L.c+'"':'')+'>'+hl(L.t,q)+'</div>';
   }
-  h += '<button class="pri start-bottom" data-a="start">Start Quiz</button><div class="notes-credit">KK</div>';
+  h += '<button class="pri start-bottom" data-a="start">Start Quiz</button><a class="github-support lesson-support" href="https://github.com/kurtking514-byte/midterm_reviewer" target="_blank" rel="noopener noreferrer" aria-label="Support the creator on GitHub by starring the repository"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.17-3.02-.12-.29-.51-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.73.79 1.17 1.79 1.17 3.02 0 4.32-2.63 5.28-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span><b>Support the creator on GitHub</b><small>If this reviewer helped you, please star the repository. Thank you!</small></span><span aria-hidden="true">↗</span></a>';
   box.innerHTML = h;
   marks = [...box.querySelectorAll('mark')]; mi = -1;
   $('#cnt').textContent = q ? marks.length+' match'+(marks.length===1?'':'es') : '';
@@ -381,7 +382,7 @@ function renderHome(){
     const state = Q.err ? '<span class="unit-state">JSON ERROR</span>' : b ? '<span class="unit-state attempted">BEST SCORE <b>'+b.s+'/'+b.n+' ('+b.pct+'%)</b></span>' : Q.items.length ? '<span class="unit-state">NOT ATTEMPTED</span>' : '<span class="unit-state">NO QUESTIONS</span>';
     h += '<button class="mc" data-a="open" data-id="'+esc(m.id)+'"><span class="unit-number">'+esc(tabOf(m))+'</span><span class="unit-title">'+esc(m.title)+'</span><span class="unit-status">'+state+(w?'<span class="review-count">'+w+' to review</span>':'')+'<span class="unit-count">'+Q.items.length+' questions</span></span></button>';
   });
-  $('#view').innerHTML = h+'</div>';
+  $('#view').innerHTML = h+'</div><a class="github-support" href="https://github.com/kurtking514-byte/midterm_reviewer" target="_blank" rel="noopener noreferrer" aria-label="Open the GitHub repository and star it to support the creator"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.83c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.17-3.02-.12-.29-.51-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.62 1.55.23 2.69.11 2.98.73.79 1.17 1.79 1.17 3.02 0 4.32-2.63 5.28-5.14 5.55.4.35.76 1.04.76 2.1v3.12c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8Z"/></svg><span><b>Support the creator on GitHub</b><small>If this reviewer helped you, please star the repository. Thank you!</small></span><span aria-hidden="true">↗</span></a>';
 }
 
 /* ---------- module view + tabs ---------- */
